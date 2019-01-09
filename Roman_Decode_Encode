@@ -1,0 +1,67 @@
+using System;
+using System.Collections.Generic;
+
+//Read only region start
+public class UserMainCode
+{
+    public string FindMessage(string input1)
+    {
+        //Read only region end
+        //Write code here
+        //throw new NotImplementedException("Method  FindMessage(string input1) not Implemented.");
+		string[] strArr=input1.Split(' ');
+		string r="";
+		for(int i=0;i<strArr.Length;i++)
+		{
+			r = r + ((char)GetRomanValue(strArr[i].ToCharArray())).ToString();
+		}
+		return r;
+    }
+	
+	public int GetRomanValue(char[] charArr)
+	{
+		int res=0;
+		
+		for(int i=0;i<charArr.Length;i++)
+		{
+			int v1=GetCharValue(charArr[i]);
+			if(i+1 < charArr.Length)
+			{
+				int v2=GetCharValue(charArr[i+1]);
+				if(v1 >= v2)
+					res += v1;
+				else
+				{
+					res += v2-v1;
+					i++;
+				}
+			}
+			else
+			{
+				res += v1;
+				//i++;
+			}
+		}
+		Console.WriteLine(res);
+		return res;
+	}
+	
+	public int GetCharValue(char c)
+	{
+		if(c=='I')
+			return 1;
+		else if(c=='V')
+			return 5;
+		else if(c=='X')
+			return 10;
+		else if(c=='L')
+			return 50;
+		else if(c=='C')
+			return 100;
+		else
+			return -1;
+		
+	}
+	
+	
+}
