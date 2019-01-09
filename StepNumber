@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+
+//Read only region start
+public class UserMainCode
+{
+    public Boolean StepNumber(int input1)
+    {
+        //Read only region end
+        //Write code here
+        //throw new NotImplementedException("Method  StepNumber(int input1) not Implemented.");
+		bool step=false;
+		int prev=input1 % 10;
+			input1 /= 10;
+		while(input1 != 0)
+		{
+			int rem=input1 % 10;
+			if((prev-rem)==1 || (prev-rem)==-1 || (prev-rem)==0)
+			{
+				step=true;
+			}
+			else
+			{
+				step=false;
+				break;
+			}
+			input1 /= 10;
+			prev=rem;
+			
+		}
+			return step;
+    }
+}
