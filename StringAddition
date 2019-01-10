@@ -1,0 +1,97 @@
+using System;
+using System.Collections.Generic;
+
+//Read only region start
+public class UserMainCode
+{
+    public string addNumberStrings(string input1,string input2)
+    {
+        //Read only region end
+        //Write code here
+		
+		char[] charArr1=input1.ToCharArray();
+		char[] charArr2=input2.ToCharArray();
+		string resStr="";
+		if(charArr1.Length > charArr2.Length)
+		{
+			int j=charArr1.Length-1;
+			int carry=0;
+			int s=0;
+			for(int i=charArr2.Length-1;i>=0;i--)
+			{
+				s=int.Parse(charArr1[j--].ToString()) + int.Parse(charArr2[i].ToString()) + carry;
+				if(s>9)
+				{
+					resStr += (s%10).ToString();
+					carry=1;
+				}
+				else
+				{
+					resStr += s.ToString();
+					carry=0;
+				}
+			}
+			for(int i=j;i>=0;i--)
+			{
+				s=int.Parse(charArr1[i].ToString())+carry;
+				if(s>9)
+				{
+					resStr += (s%10).ToString();
+					carry=1;
+				}
+				else
+				{
+					resStr += s.ToString();
+					carry=0;
+				}
+			}
+			if(carry == 1)
+			{
+				resStr += carry.ToString();
+			}
+		}
+		else
+		{
+			int j=charArr2.Length-1;
+			int carry=0;
+			int s=0;
+			for(int i=charArr1.Length-1;i>=0;i--)
+			{
+				s=int.Parse(charArr2[j--].ToString()) + int.Parse(charArr1[i].ToString()) + carry;
+				if(s>9)
+				{
+					resStr += (s%10).ToString();
+					carry=1;
+				}
+				else
+				{
+					resStr += s.ToString();
+					carry=0;
+				}
+			}
+			for(int i=j;i>=0;i--)
+			{
+				s=int.Parse(charArr2[i].ToString())+carry;
+				if(s>9)
+				{
+					resStr += (s%10).ToString();
+					carry=1;
+				}
+				else
+				{
+					resStr += s.ToString();
+					carry=0;
+				}
+			}
+			if(carry == 1)
+			{
+				resStr += carry.ToString();
+			}
+		}
+		char[] resArr=resStr.ToCharArray();
+		Array.Reverse(resArr);
+		resStr=String.Join("",resArr);
+		return resStr;
+        
+    }
+}
