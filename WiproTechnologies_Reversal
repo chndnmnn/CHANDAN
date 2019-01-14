@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+
+//Read only region start
+public class UserMainCode
+{
+    public string reverseWordsandCase(string input1,int input2)
+    {
+        //Read only region end
+        //Write code here
+        //throw new NotImplementedException("Method  reverseWordsandCase(string input1,int input2) not Implemented.");
+		string[] strArr=input1.Split(' ');
+		string resStr="";
+		if(input2 == 0)
+		{
+			for(int i=0;i<strArr.Length;i++)
+			{
+				char[] charArr=strArr[i].ToCharArray();
+				Array.Reverse(charArr);
+				resStr += " " + new string(charArr);
+			}
+		}
+		else if(input2 == 1)
+		{
+			for(int i=0;i<strArr.Length;i++)
+			{
+				char[] charArr=strArr[i].ToCharArray();
+				char[] Arr=strArr[i].ToCharArray();
+				
+				Array.Reverse(charArr);
+				//Array.Reverse(charArr1);
+				Console.WriteLine(new string(Arr));
+				for(int j=0;j<charArr.Length;j++)
+				{
+					charArr[j]=char.ToLower(charArr[j]);
+					if(char.IsLetter(charArr[j]) && char.IsLetter(Arr[j]))
+					{
+						
+						if(char.IsUpper(Arr[j]))
+						{
+							charArr[j]=char.ToUpper(charArr[j]);
+						
+						}
+					}
+					else if(!char.IsLetter(Arr[j]))
+					{
+						charArr[j]=char.ToUpper(charArr[j]);
+					}
+				}
+				resStr += " " + new string(charArr);
+			}
+		}
+		return resStr.Substring(1);
+    }
+}
